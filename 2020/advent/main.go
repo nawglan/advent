@@ -179,8 +179,7 @@ func main() {
 	filename := ""
 	fmt.Println(filename)
 
-	filename = os.Args[1]
-	//filename = "data/day01.txt"
+	filename = "data/day01.txt"
 	puzzle_data := readFile(filename)
 	day01(puzzle_data)
 	fmt.Println("-----------------------")
@@ -188,7 +187,8 @@ func main() {
 	puzzle_data = readFile(filename)
 	day02(puzzle_data)
 	fmt.Println("-----------------------")
-	filename = "data/day03.txt"
+	filename = os.Args[1]
+	//filename = "data/day03_sample.txt"
 	puzzle_data = readFile(filename)
 	day03(puzzle_data)
 	fmt.Println("-----------------------")
