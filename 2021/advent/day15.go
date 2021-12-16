@@ -54,7 +54,7 @@ func (pq *PriorityQueue) update(item *Item, pos int, distance int) {
 	heap.Fix(pq, item.index)
 }
 
-func dijkstra(start int) ([]int, []int) {
+func dijkstra(start int, end int) ([]int, []int) {
 	seen := make([]bool, gridWidth*gridLength)
 	dist := make([]int, gridWidth*gridLength)
 	prev := make([]int, gridWidth*gridLength)
@@ -92,13 +92,16 @@ func dijkstra(start int) ([]int, []int) {
 				heap.Push(&pq, new_item)
 			}
 		}
+		if curr_item.value == end {
+			return dist, prev
+		}
 	}
 
 	return dist, prev
 }
 
 func findShortestPath(start, end int) []int {
-	dist, prev := dijkstra(0)
+	dist, prev := dijkstra(start, end)
 
 	rev_path := []int{}
 	if dist[end] == math.MaxInt {
