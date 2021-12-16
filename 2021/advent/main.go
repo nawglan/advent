@@ -289,51 +289,51 @@ func main() {
 	filename = "data/day14.txt"
 	puzzle_data = readFile(filename)
 	day14(puzzle_data)
-
+	fmt.Println("-----------------------")
+	filename = "data/day15.txt"
+	puzzle_data = readFile(filename)
+	day15(puzzle_data)
 	fmt.Println("-----------------------")
 	filename = os.Args[1]
 	puzzle_data = readFile(filename)
-	day15(puzzle_data)
+	day16(puzzle_data)
+
 	/*
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day16(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day17(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day18(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day19(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day20(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day21(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day22(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day23(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day24(puzzle_data)
-	 fmt.Println("-----------------------")
-	 filename = os.Args[1]
-	 puzzle_data = readFile(filename)
-	 day25(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day17(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day18(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day19(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day20(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day21(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day22(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day23(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day24(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = os.Args[1]
+		puzzle_data = readFile(filename)
+		day25(puzzle_data)
 	*/
 }
