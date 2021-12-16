@@ -2,10 +2,18 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"strings"
 )
 
 const DEBUG = false
+
+type Packet struct {
+	version    int
+	typeId     int
+	value      int
+	subPackets []Packet
+}
 
 func hex2bin(hex string) string {
 	hex2bits := map[string]string{
@@ -113,13 +121,6 @@ func parseSubPacketCount(binary string) (int, string) {
 	return count, remainder
 }
 
-type Packet struct {
-	version    int
-	typeId     int
-	literal    int
-	subPackets []Packet
-}
-
 func parsePacket(binary string) (Packet, string) {
 	remainder := ""
 
@@ -129,7 +130,7 @@ func parsePacket(binary string) (Packet, string) {
 
 	switch packet.typeId {
 	case 4: // literal value
-		packet.literal, remainder = parseLiteralValue(binary[6:])
+		packet.value, remainder = parseLiteralValue(binary[6:])
 	default: // operator packet
 		lengthTypeId := 0
 		lengthTypeId, remainder = parseLengthTypeId(remainder)
@@ -157,6 +158,95 @@ func parsePacket(binary string) (Packet, string) {
 	return packet, remainder
 }
 
+func calcValue(packet Packet) int {
+	value := 0
+	switch packet.typeId {
+	case 0: // sum
+		spvals := []int{}
+		for _, sp := range packet.subPackets {
+			spvals = append(spvals, calcValue(sp))
+		}
+		value = sumSlice(spvals)
+		if DEBUG {
+			fmt.Printf("SUM: %v is %d\n", spvals, value)
+		}
+	case 1: //product
+		spvals := []int{}
+		for _, sp := range packet.subPackets {
+			spvals = append(spvals, calcValue(sp))
+		}
+		value = mulSlice(spvals)
+		if DEBUG {
+			fmt.Printf("MUL: %v is %d\n", spvals, value)
+		}
+	case 2: //min
+		spvals := []int{}
+		for _, sp := range packet.subPackets {
+			spvals = append(spvals, calcValue(sp))
+		}
+		value = math.MaxInt
+		for _, spval := range spvals {
+			if spval < value {
+				value = spval
+			}
+		}
+		if DEBUG {
+			fmt.Printf("MIN: %v is %d\n", spvals, value)
+		}
+	case 3: //max
+		spvals := []int{}
+		for _, sp := range packet.subPackets {
+			spvals = append(spvals, calcValue(sp))
+		}
+		value = 0
+		for _, spval := range spvals {
+			if spval > value {
+				value = spval
+			}
+		}
+		if DEBUG {
+			fmt.Printf("MAX: %v is %d\n", spvals, value)
+		}
+	case 4: //literal
+		value = packet.value
+		if DEBUG {
+			fmt.Printf("LIT: %d\n", value)
+		}
+	case 5: //gt
+		left := calcValue(packet.subPackets[0])
+		right := calcValue(packet.subPackets[1])
+
+		if left > right {
+			value = 1
+		}
+		if DEBUG {
+			fmt.Printf("GT: %d > %d is %d\n", left, right, value)
+		}
+	case 6: //lt
+		left := calcValue(packet.subPackets[0])
+		right := calcValue(packet.subPackets[1])
+
+		if left < right {
+			value = 1
+		}
+		if DEBUG {
+			fmt.Printf("LT: %d < %d is %d\n", left, right, value)
+		}
+	case 7: //eq
+		left := calcValue(packet.subPackets[0])
+		right := calcValue(packet.subPackets[1])
+
+		if left == right {
+			value = 1
+		}
+		if DEBUG {
+			fmt.Printf("EQ %d == %d is %d\n", left, right, value)
+		}
+	}
+
+	return value
+}
+
 func day16(puzzle_data []string) {
 	for _, dataVal := range puzzle_data {
 		binary := hex2bin(dataVal)
@@ -167,7 +257,7 @@ func day16(puzzle_data []string) {
 		sum := 0
 		for len(queue) > 0 {
 			curr := queue[0]
-			sum += curr.version
+			sum += curr.version // part 1
 			queue = queue[1:]
 			for _, sp := range curr.subPackets {
 				queue = append(queue, sp)
@@ -175,5 +265,7 @@ func day16(puzzle_data []string) {
 		}
 
 		fmt.Printf("Day 16 (part 1): The sum of the packet versions is %d\n", sum)
+		value := calcValue(packet)
+		fmt.Printf("Day 16 (part 2): The value of the packet is %d\n", value)
 	}
 }
