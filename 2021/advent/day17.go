@@ -5,9 +5,9 @@ import (
 )
 
 func day17(puzzle_data []string) {
-	fmt.Println("day17")
-	/*
-		for _, dataVal := range puzzle_data {
+	for _, dataVal := range puzzle_data {
+		if len(dataVal) > 0 {
 		}
-	*/
+	}
+	fmt.Printf("Day 17 (part 1): \n")
 }
