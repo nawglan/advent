@@ -53,7 +53,7 @@ func day08(puzzle_data []string) {
 		if prg[i][0] == "jmp" {
 			prg[i][0] = "nop"
 			if acc, ok = runPrg(prg); ok {
-				break;
+				break
 			} else {
 				prg[i][0] = "jmp"
 			}
@@ -61,7 +61,7 @@ func day08(puzzle_data []string) {
 			if prg[i][0] == "nop" {
 				prg[i][0] = "jmp"
 				if acc, ok = runPrg(prg); ok {
-					break;
+					break
 				} else {
 					prg[i][0] = "nop"
 				}
