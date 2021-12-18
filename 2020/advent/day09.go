@@ -73,14 +73,12 @@ func day09(puzzle_data []string) {
 		list = append(list, val)
 		if len(list) > 1 {
 			sum = sumSlice(list)
-			fmt.Printf("DEZ: sum (%d == %d), len is %d\n", badValue, sum, len(list))
 			if sum == badValue {
 				break
 			} else {
 				for sum > badValue && len(list) > 2 {
 					list = list[1:]
 					sum = sumSlice(list)
-					fmt.Printf("DEZ: sum (%d == %d), len is %d\n", badValue, sum, len(list))
 				}
 			}
 		}
