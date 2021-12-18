@@ -68,7 +68,7 @@ func day09(puzzle_data []string) {
 	list := []int{}
 
 	sum := 0
-	for i := len(puzzle_data)-1; i >= 0; i-- {
+	for i := len(puzzle_data) - 1; i >= 0; i-- {
 		val := makeInt(puzzle_data[i])
 		list = append(list, val)
 		if len(list) > 1 {
