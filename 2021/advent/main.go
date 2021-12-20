@@ -298,15 +298,14 @@ func main() {
 	puzzle_data = readFile(filename)
 	day16(puzzle_data)
 	fmt.Println("-----------------------")
-	filename = os.Args[1]
+	filename = "data/day17.txt"
 	puzzle_data = readFile(filename)
 	day17(puzzle_data)
-
+	fmt.Println("-----------------------")
+	filename = os.Args[1]
+	puzzle_data = readFile(filename)
+	day18(puzzle_data)
 	/*
-		fmt.Println("-----------------------")
-		filename = os.Args[1]
-		puzzle_data = readFile(filename)
-		day18(puzzle_data)
 		fmt.Println("-----------------------")
 		filename = os.Args[1]
 		puzzle_data = readFile(filename)
