@@ -8,6 +8,19 @@ import (
 	"strings"
 )
 
+func bin2dec(bin string) int {
+	mul := 1
+	sum := 0
+	for i := len(bin) - 1; i >= 0; i-- {
+		if bin[i] == '1' {
+			sum += mul
+		}
+		mul *= 2
+	}
+
+	return sum
+}
+
 var (
 	gridWidth  = 0
 	gridLength = 0
@@ -302,7 +315,7 @@ func main() {
 	puzzle_data = readFile(filename)
 	day17(puzzle_data)
 	fmt.Println("-----------------------")
-	filename = os.Args[1]
+	filename = "data/day18.txt"
 	puzzle_data = readFile(filename)
 	day18(puzzle_data)
 	/*
@@ -311,13 +324,15 @@ func main() {
 		puzzle_data = readFile(filename)
 		day19(puzzle_data)
 		fmt.Println("-----------------------")
-		filename = os.Args[1]
+		filename = "data/day20.txt"
 		puzzle_data = readFile(filename)
 		day20(puzzle_data)
-		fmt.Println("-----------------------")
-		filename = os.Args[1]
-		puzzle_data = readFile(filename)
-		day21(puzzle_data)
+	*/
+	fmt.Println("-----------------------")
+	filename = os.Args[1]
+	puzzle_data = readFile(filename)
+	day21(puzzle_data)
+	/*
 		fmt.Println("-----------------------")
 		filename = os.Args[1]
 		puzzle_data = readFile(filename)
