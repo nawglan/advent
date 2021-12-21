@@ -44,19 +44,6 @@ func hex2bin(hex string) string {
 	return binary
 }
 
-func bin2dec(bin string) int {
-	mul := 1
-	sum := 0
-	for i := len(bin) - 1; i >= 0; i-- {
-		if bin[i] == '1' {
-			sum += mul
-		}
-		mul *= 2
-	}
-
-	return sum
-}
-
 func parsePacketVersion(binary string) (int, string) {
 	version := bin2dec(binary[0:3])
 	remainder := binary[3:]
