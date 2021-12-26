@@ -319,35 +319,35 @@ func main() {
 	puzzle_data = readFile(filename)
 	day18(puzzle_data)
 	/*
-			fmt.Println("-----------------------")
-			filename = os.Args[1]
-			puzzle_data = readFile(filename)
-			day19(puzzle_data)
-			fmt.Println("-----------------------")
-			filename = "data/day20.txt"
-			puzzle_data = readFile(filename)
-			day20(puzzle_data)
-		fmt.Println("-----------------------")
-		filename = "data/day21.txt"
-		puzzle_data = readFile(filename)
-		day21(puzzle_data)
 		fmt.Println("-----------------------")
 		filename = os.Args[1]
 		puzzle_data = readFile(filename)
-		day22(puzzle_data)
+		day19(puzzle_data)
+		fmt.Println("-----------------------")
+		filename = "data/day20.txt"
+		puzzle_data = readFile(filename)
+		day20(puzzle_data)
 	*/
+	fmt.Println("-----------------------")
+	filename = "data/day21.txt"
+	puzzle_data = readFile(filename)
+	day21(puzzle_data)
 	/*
 		fmt.Println("-----------------------")
 		filename = os.Args[1]
 		puzzle_data = readFile(filename)
-		day23(puzzle_data)
+		day22(puzzle_data)
 		fmt.Println("-----------------------")
 		filename = os.Args[1]
 		puzzle_data = readFile(filename)
-		day24(puzzle_data)
+		day23(puzzle_data)
 	*/
 	fmt.Println("-----------------------")
 	filename = os.Args[1]
+	puzzle_data = readFile(filename)
+	day24(puzzle_data)
+	fmt.Println("-----------------------")
+	filename = "data/day25.txt"
 	puzzle_data = readFile(filename)
 	day25(puzzle_data)
 }
