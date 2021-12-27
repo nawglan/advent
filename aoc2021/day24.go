@@ -190,8 +190,14 @@ func (n modelNum) String() string {
 	return out
 }
 
+/*
+Part1: 99299513899971
+Part2: 93185111127911
+*/
+
 func calcLargest(p Program, c chan string) {
-	largestMN := modelNum{9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9}
+	//largestMN := modelNum{9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9}
+	largestMN := modelNum{9, 9, 2, 9, 9, 5, 1, 3, 8, 9, 9, 9, 7, 1}
 
 	for p.execute(largestMN) == false {
 		largestMN = largestMN.nextSmallest()
@@ -203,7 +209,7 @@ func calcLargest(p Program, c chan string) {
 }
 
 func calcSmallest(p Program, c chan string) {
-	smallestMN := modelNum{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+	smallestMN := modelNum{9, 3, 1, 8, 5, 1, 1, 1, 1, 2, 7, 9, 1, 1}
 	for p.execute(smallestMN) == false {
 		smallestMN = smallestMN.nextLargest()
 		if fmt.Sprintf("%s", smallestMN) == "11111111111111" {
