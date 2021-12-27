@@ -1,11 +1,11 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"fmt"
 	"math"
 	"sort"
 	"strings"
-	p "advent/util/parse"
 )
 
 func day07(puzzle_data []string) {

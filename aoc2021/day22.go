@@ -1,9 +1,9 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"fmt"
 	"regexp"
-	p "advent/util/parse"
 )
 
 type Cube struct {

@@ -1,10 +1,10 @@
 package main
 
 import (
+	parse "advent/util/parse"
 	"fmt"
 	"math"
 	"strings"
-	parse "advent/util/parse"
 )
 
 const DEBUG24 = false
@@ -60,7 +60,8 @@ func (p Program) execute(input modelNum) bool {
 			switch tokens[2] {
 			case "w", "x", "y", "z":
 				if DEBUG24 {
-					fmt.Printf("DEZ: %s = %s(%d) * %s(%d) = ", tokens[1], tokens[1], p.registers[tokens[1]], tokens[2], p.registers[tokens[2]]) }
+					fmt.Printf("DEZ: %s = %s(%d) * %s(%d) = ", tokens[1], tokens[1], p.registers[tokens[1]], tokens[2], p.registers[tokens[2]])
+				}
 				val = p.registers[tokens[2]]
 			default:
 				val = parse.MakeInt(tokens[2])
