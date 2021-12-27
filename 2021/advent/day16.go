@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-const DEBUG = false
+var DEBUG16 = false
 
 type Packet struct {
 	version    int
@@ -47,7 +47,7 @@ func hex2bin(hex string) string {
 func parsePacketVersion(binary string) (int, string) {
 	version := bin2dec(binary[0:3])
 	remainder := binary[3:]
-	if DEBUG {
+	if DEBUG16 {
 		fmt.Printf("Version: %d, remainder: %s\n", version, remainder)
 	}
 	return version, remainder
@@ -56,7 +56,7 @@ func parsePacketVersion(binary string) (int, string) {
 func parsePacketTypeId(binary string) (int, string) {
 	id := bin2dec(binary[0:3])
 	remainder := binary[3:]
-	if DEBUG {
+	if DEBUG16 {
 		fmt.Printf("Type ID: %d, remainder: %s\n", id, remainder)
 	}
 	return id, remainder
@@ -75,7 +75,7 @@ func parseLiteralValue(binary string) (int, string) {
 	}
 	remainder := binary[n:]
 	value := bin2dec(literal)
-	if DEBUG {
+	if DEBUG16 {
 		fmt.Printf("Literal Value: %d, remainder: %s\n", value, remainder)
 	}
 	return value, remainder
@@ -84,7 +84,7 @@ func parseLiteralValue(binary string) (int, string) {
 func parseLengthTypeId(binary string) (int, string) {
 	lengthTypeId := bin2dec(binary[0:1])
 	remainder := binary[1:]
-	if DEBUG {
+	if DEBUG16 {
 		fmt.Printf("Length Type ID: %d, remainder: %s\n", lengthTypeId, remainder)
 	}
 	return lengthTypeId, remainder
@@ -93,7 +93,7 @@ func parseLengthTypeId(binary string) (int, string) {
 func parseLength(binary string) (int, string) {
 	length := bin2dec(binary[0:15])
 	remainder := binary[15:]
-	if DEBUG {
+	if DEBUG16 {
 		fmt.Printf("Length Count: %d, remainder: %s\n", length, remainder)
 	}
 	return length, remainder
@@ -102,7 +102,7 @@ func parseLength(binary string) (int, string) {
 func parseSubPacketCount(binary string) (int, string) {
 	count := bin2dec(binary[0:11])
 	remainder := binary[11:]
-	if DEBUG {
+	if DEBUG16 {
 		fmt.Printf("Sub Packet Count: %d, remainder: %s\n", count, remainder)
 	}
 	return count, remainder
@@ -154,7 +154,7 @@ func calcValue(packet Packet) int {
 			spvals = append(spvals, calcValue(sp))
 		}
 		value = sumSlice(spvals)
-		if DEBUG {
+		if DEBUG16 {
 			fmt.Printf("SUM: %v is %d\n", spvals, value)
 		}
 	case 1: //product
@@ -163,7 +163,7 @@ func calcValue(packet Packet) int {
 			spvals = append(spvals, calcValue(sp))
 		}
 		value = mulSlice(spvals)
-		if DEBUG {
+		if DEBUG16 {
 			fmt.Printf("MUL: %v is %d\n", spvals, value)
 		}
 	case 2: //min
@@ -177,7 +177,7 @@ func calcValue(packet Packet) int {
 				value = spval
 			}
 		}
-		if DEBUG {
+		if DEBUG16 {
 			fmt.Printf("MIN: %v is %d\n", spvals, value)
 		}
 	case 3: //max
@@ -191,12 +191,12 @@ func calcValue(packet Packet) int {
 				value = spval
 			}
 		}
-		if DEBUG {
+		if DEBUG16 {
 			fmt.Printf("MAX: %v is %d\n", spvals, value)
 		}
 	case 4: //literal
 		value = packet.value
-		if DEBUG {
+		if DEBUG16 {
 			fmt.Printf("LIT: %d\n", value)
 		}
 	case 5: //gt
@@ -206,7 +206,7 @@ func calcValue(packet Packet) int {
 		if left > right {
 			value = 1
 		}
-		if DEBUG {
+		if DEBUG16 {
 			fmt.Printf("GT: %d > %d is %d\n", left, right, value)
 		}
 	case 6: //lt
@@ -216,7 +216,7 @@ func calcValue(packet Packet) int {
 		if left < right {
 			value = 1
 		}
-		if DEBUG {
+		if DEBUG16 {
 			fmt.Printf("LT: %d < %d is %d\n", left, right, value)
 		}
 	case 7: //eq
@@ -226,7 +226,7 @@ func calcValue(packet Packet) int {
 		if left == right {
 			value = 1
 		}
-		if DEBUG {
+		if DEBUG16 {
 			fmt.Printf("EQ %d == %d is %d\n", left, right, value)
 		}
 	}
