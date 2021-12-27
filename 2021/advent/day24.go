@@ -190,25 +190,35 @@ func (n modelNum) String() string {
 	return out
 }
 
-func day24(puzzle_data []string) {
-	MONAD := Program{program: puzzle_data}
-
+func calcLargest(p Program, c chan string) {
 	largestMN := modelNum{9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9}
 
-	for MONAD.execute(largestMN) == false {
+	for p.execute(largestMN) == false {
 		largestMN = largestMN.nextSmallest()
 		if fmt.Sprintf("%s", largestMN) == "99999999999999" {
 			panic("wrapped")
 		}
 	}
-	fmt.Printf("Day 24 (part 1): Largest model number accepted is %s\n", largestMN)
+	c <- fmt.Sprintf("Day 24 (part 1): Largest model number accepted is %s\n", largestMN)
+}
 
+func calcSmallest(p Program, c chan string) {
 	smallestMN := modelNum{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-	for MONAD.execute(smallestMN) == false {
+	for p.execute(smallestMN) == false {
 		smallestMN = smallestMN.nextLargest()
 		if fmt.Sprintf("%s", smallestMN) == "11111111111111" {
 			panic("wrapped")
 		}
 	}
-	fmt.Printf("Day 24 (part 2): Smallest model number accepted is %s\n", smallestMN)
+	c <- fmt.Sprintf("Day 24 (part 2): Smallest model number accepted is %s\n", smallestMN)
+}
+
+func day24(puzzle_data []string) {
+	largest_chan := make(chan string)
+	smallest_chan := make(chan string)
+
+	go calcLargest(Program{program: puzzle_data}, largest_chan)
+	go calcSmallest(Program{program: puzzle_data}, smallest_chan)
+
+	fmt.Printf("%s%s", <-largest_chan, <-smallest_chan)
 }
