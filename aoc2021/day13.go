@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	p "advent/util/parse"
 )
 
 func printPaper(paper map[string]int, maxX int, maxY int) {
@@ -31,14 +32,14 @@ func makePaper(puzzle_data []string) {
 			paper[dataVal] = 1 // store the mark
 
 			coords := strings.Split(dataVal, ",")
-			x := makeInt(coords[0])
-			y := makeInt(coords[1])
+			x := p.MakeInt(coords[0])
+			y := p.MakeInt(coords[1])
 			// store maxX and maxY
 			if maxX < x {
-				maxX = makeInt(coords[0])
+				maxX = p.MakeInt(coords[0])
 			}
 			if maxY < y {
-				maxY = makeInt(coords[1])
+				maxY = p.MakeInt(coords[1])
 			}
 		}
 		if strings.Contains(dataVal, "fold") {
@@ -54,13 +55,13 @@ func day13(puzzle_data []string) {
 	for _, part := range []string{"part 1", "part 2"} {
 		for f, fold := range folds {
 			cmd := strings.Split(fold, "=")
-			foldpos := makeInt(cmd[1])
+			foldpos := p.MakeInt(cmd[1])
 
 			// mark transposed marks
 			for k := range paper {
 				coords := strings.Split(k, ",")
-				x := makeInt(coords[0])
-				y := makeInt(coords[1])
+				x := p.MakeInt(coords[0])
+				y := p.MakeInt(coords[1])
 
 				if cmd[0] == "y" {
 					if y > foldpos {

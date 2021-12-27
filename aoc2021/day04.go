@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	p "advent/util/parse"
 )
 
 type cardCell struct {
@@ -24,7 +25,7 @@ func day04(puzzle_data []string) {
 		var newCard bingoCard
 		for rowNum := range newCard.cells {
 			for colNum, val := range strings.Fields(puzzle_data[i+rowNum]) {
-				newCard.cells[rowNum][colNum].value = makeInt(val)
+				newCard.cells[rowNum][colNum].value = p.MakeInt(val)
 			}
 		}
 		bingoCards[cardNum] = newCard
@@ -36,7 +37,7 @@ func day04(puzzle_data []string) {
 	for {
 		found := false
 		for _, number := range strings.Split(puzzle_data[0], ",") {
-			num := makeInt(number)
+			num := p.MakeInt(number)
 			for c := range bingoCards {
 				if !bingoCards[c].found {
 					// mark card`
@@ -75,7 +76,7 @@ func day04(puzzle_data []string) {
 								}
 							}
 						}
-						messages = append(messages, fmt.Sprintf("Sum = %d, Last Number = %s, product = %d\n", sum, number, sum*makeInt(number)))
+						messages = append(messages, fmt.Sprintf("Sum = %d, Last Number = %s, product = %d\n", sum, number, sum*p.MakeInt(number)))
 						found = true
 						if part1 {
 							break

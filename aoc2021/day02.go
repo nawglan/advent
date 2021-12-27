@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	p "advent/util/parse"
 )
 
 func day02(puzzle_data []string) {
@@ -11,7 +12,7 @@ func day02(puzzle_data []string) {
 	d := 0
 	for _, dataVal := range puzzle_data {
 		cmd := strings.Split(dataVal, " ")
-		val := makeInt(cmd[1])
+		val := p.MakeInt(cmd[1])
 		if cmd[0] == "forward" {
 			h += val
 		}
@@ -30,7 +31,7 @@ func day02(puzzle_data []string) {
 	d = 0
 	for _, dataVal := range puzzle_data {
 		cmd := strings.Fields(dataVal)
-		val := makeInt(cmd[1])
+		val := p.MakeInt(cmd[1])
 		if cmd[0] == "forward" {
 			h += val
 			if aim > 0 {

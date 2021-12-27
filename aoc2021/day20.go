@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	p "advent/util/parse"
 )
 
 var (
@@ -154,7 +155,7 @@ func (i Image) enhancePixel(pos int) bool {
 		binary += inf_value
 	}
 
-	idx := bin2dec(binary)
+	idx := p.Bin2dec(binary)
 	result := filter[int(idx)]
 
 	return result

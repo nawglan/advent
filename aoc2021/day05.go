@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	p "advent/util/parse"
 )
 
 func day05(puzzle_data []string) {
@@ -15,10 +16,10 @@ func day05(puzzle_data []string) {
 		pointA := strings.Split(values[0], ",")
 		pointB := strings.Split(values[2], ",")
 
-		xA := makeInt(pointA[0])
-		yA := makeInt(pointA[1])
-		xB := makeInt(pointB[0])
-		yB := makeInt(pointB[1])
+		xA := p.MakeInt(pointA[0])
+		yA := p.MakeInt(pointA[1])
+		xB := p.MakeInt(pointB[0])
+		yB := p.MakeInt(pointB[1])
 
 		// skip diagonal lines
 		if xA == xB || yA == yB {
@@ -63,10 +64,10 @@ func day05(puzzle_data []string) {
 		pointB := strings.Split(values[2], ",")
 
 		if pointA[0] != pointB[0] && pointA[1] != pointB[1] {
-			xA := makeInt(pointA[0])
-			yA := makeInt(pointA[1])
-			xB := makeInt(pointB[0])
-			yB := makeInt(pointB[1])
+			xA := p.MakeInt(pointA[0])
+			yA := p.MakeInt(pointA[1])
+			xB := p.MakeInt(pointB[0])
+			yB := p.MakeInt(pointB[1])
 
 			grid[xB][yB]++
 			for {

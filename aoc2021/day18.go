@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	p "advent/util/parse"
 )
 
 type SnailFish struct {
@@ -364,7 +365,7 @@ func day18(puzzle_data []string) {
 				stack = append(stack, node)
 			} else {
 				node := &SnailFish{
-					value: makeInt(token),
+					value: p.MakeInt(token),
 				}
 				node.updateDepth()
 				stack = append(stack, node)

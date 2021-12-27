@@ -5,12 +5,13 @@ import (
 	"math"
 	"sort"
 	"strings"
+	p "advent/util/parse"
 )
 
 func day07(puzzle_data []string) {
 	crabs := make([]int, 1+strings.Count(puzzle_data[0], ","))
 	for i, val := range strings.Split(puzzle_data[0], ",") {
-		crabs[i] = makeInt(val)
+		crabs[i] = p.MakeInt(val)
 	}
 	sort.Ints(crabs)
 

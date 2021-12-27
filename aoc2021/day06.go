@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	p "advent/util/parse"
 )
 
 func day06(puzzle_data []string) {
@@ -10,7 +11,7 @@ func day06(puzzle_data []string) {
 	for _, max := range maxDays {
 		counts := make([]int, 9)
 		for _, val := range strings.Split(puzzle_data[0], ",") {
-			counts[makeInt(val)]++
+			counts[p.MakeInt(val)]++
 		}
 
 		for numDays := 0; numDays < max; numDays++ {

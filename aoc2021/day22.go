@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	p "advent/util/parse"
 )
 
 type Cube struct {
@@ -31,12 +32,12 @@ func day22(puzzle_data []string) {
 			if matches[1] == "on" {
 				cmd = true
 			}
-			minX = makeInt(matches[2])
-			maxX = makeInt(matches[3])
-			minY = makeInt(matches[4])
-			maxY = makeInt(matches[5])
-			minZ = makeInt(matches[6])
-			maxZ = makeInt(matches[7])
+			minX = p.MakeInt(matches[2])
+			maxX = p.MakeInt(matches[3])
+			minY = p.MakeInt(matches[4])
+			maxY = p.MakeInt(matches[5])
+			minZ = p.MakeInt(matches[6])
+			maxZ = p.MakeInt(matches[7])
 		}
 		if minZ >= -50 && minY >= -50 && minX >= -50 && maxZ <= 50 && maxY <= 50 && maxX <= 50 {
 			for z := minZ; z <= maxZ; z++ {
@@ -64,12 +65,12 @@ func day22(puzzle_data []string) {
 				cmd = true
 			}
 			cube := Cube{
-				minX: makeInt(matches[2]),
-				maxX: makeInt(matches[3]),
-				minY: makeInt(matches[4]),
-				maxY: makeInt(matches[5]),
-				minZ: makeInt(matches[6]),
-				maxZ: makeInt(matches[7]),
+				minX: p.MakeInt(matches[2]),
+				maxX: p.MakeInt(matches[3]),
+				minY: p.MakeInt(matches[4]),
+				maxY: p.MakeInt(matches[5]),
+				minZ: p.MakeInt(matches[6]),
+				maxZ: p.MakeInt(matches[7]),
 			}
 			cubes = merge(cubes, cube, cmd)
 		}

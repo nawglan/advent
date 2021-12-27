@@ -1,11 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	p "advent/util/parse"
+)
 
 func day01(puzzle_data []string) {
 	var puzzleVals []int
 	for _, val := range puzzle_data {
-		puzzleVals = append(puzzleVals, makeInt(val))
+		puzzleVals = append(puzzleVals, p.MakeInt(val))
 	}
 
 	// part 1

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	p "advent/util/parse"
 )
 
 func day08(puzzle_data []string) {
@@ -115,7 +116,7 @@ func day08(puzzle_data []string) {
 			letters := strings.Join(chars, "")
 			outputNum += digits[letters]
 		}
-		sum += makeInt(outputNum)
+		sum += p.MakeInt(outputNum)
 	}
 	fmt.Printf("Day 8 (part 2): The sum of all the output numbers is %d\n", sum)
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	p "advent/util/parse"
 )
 
 var (
@@ -65,9 +66,9 @@ func start_game() (g Game) {
 func day21(puzzle_data []string) {
 	// parse input data
 	t := strings.Fields(puzzle_data[0])
-	p1_start = makeInt(t[len(t)-1])
+	p1_start = p.MakeInt(t[len(t)-1])
 	t = strings.Fields(puzzle_data[1])
-	p2_start = makeInt(t[len(t)-1])
+	p2_start = p.MakeInt(t[len(t)-1])
 
 	game := start_game()
 

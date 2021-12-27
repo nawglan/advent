@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"strings"
+	p "advent/util/parse"
 )
 
 func day17(puzzle_data []string) {
@@ -14,10 +15,10 @@ func day17(puzzle_data []string) {
 	target_x := strings.Split(target_area[0], "..")
 	target_y := strings.Split(target_area[1], "..")
 
-	target_minx := makeInt(target_x[0])
-	target_maxx := makeInt(target_x[1])
-	target_miny := makeInt(target_y[0])
-	target_maxy := makeInt(target_y[1])
+	target_minx := p.MakeInt(target_x[0])
+	target_maxx := p.MakeInt(target_x[1])
+	target_miny := p.MakeInt(target_y[0])
+	target_maxy := p.MakeInt(target_y[1])
 
 	max_y_hit := target_miny
 
