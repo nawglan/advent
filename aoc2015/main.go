@@ -3,7 +3,7 @@ package main
 import (
 	p "advent/util/parse"
 	"fmt"
-	"os"
+	//	"os"
 )
 
 func main() {
@@ -15,18 +15,18 @@ func main() {
 	puzzle_data := p.ReadFile(filename)
 	day01(puzzle_data)
 	fmt.Println("-----------------------")
-	filename = os.Args[1]
+	filename = "data/day02.txt"
 	puzzle_data = p.ReadFile(filename)
 	day02(puzzle_data)
+	fmt.Println("-----------------------")
+	filename = "data/day03.txt"
+	puzzle_data = p.ReadFile(filename)
+	day03(puzzle_data)
+	fmt.Println("-----------------------")
+	filename = "data/day04.txt"
+	puzzle_data = p.ReadFile(filename)
+	day04(puzzle_data)
 	/*
-		fmt.Println("-----------------------")
-		filename = "data/day03.txt"
-		puzzle_data = p.ReadFile(filename)
-		day03(puzzle_data)
-		fmt.Println("-----------------------")
-		filename = "data/day04.txt"
-		puzzle_data = p.ReadFile(filename)
-		day04(puzzle_data)
 		fmt.Println("-----------------------")
 		filename = "data/day05.txt"
 		puzzle_data = p.ReadFile(filename)
