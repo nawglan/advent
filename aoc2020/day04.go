@@ -1,6 +1,7 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"encoding/hex"
 	"fmt"
 	"strconv"
@@ -61,14 +62,14 @@ func day04(puzzle_data []string) {
 						case "hgt:":
 							if strings.Contains(data, "cm") {
 								data = strings.Replace(data, "cm", "", 1)
-								height := makeInt(data)
+								height := p.MakeInt(data)
 								if height >= 150 && height <= 193 {
 									valid_fields++
 								}
 							} else {
 								if strings.Contains(data, "in") {
 									data = strings.Replace(data, "in", "", 1)
-									height := makeInt(data)
+									height := p.MakeInt(data)
 									if height >= 59 && height <= 76 {
 										valid_fields++
 									}

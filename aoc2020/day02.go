@@ -1,6 +1,7 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"fmt"
 	"strings"
 )
@@ -13,11 +14,11 @@ func day02(puzzle_data []string) {
 		minmax := strings.Split(data[0], "-")
 		need := data[1][0]
 		contains := strings.Count(data[2], fmt.Sprintf("%c", need))
-		if contains >= makeInt(minmax[0]) && contains <= makeInt(minmax[1]) {
+		if contains >= p.MakeInt(minmax[0]) && contains <= p.MakeInt(minmax[1]) {
 			count_part1++
 		}
-		first_pos := makeInt(minmax[0]) - 1
-		second_pos := makeInt(minmax[1]) - 1
+		first_pos := p.MakeInt(minmax[0]) - 1
+		second_pos := p.MakeInt(minmax[1]) - 1
 		if (data[2][first_pos] == need || data[2][second_pos] == need) &&
 			data[2][first_pos] != data[2][second_pos] {
 			count_part2++

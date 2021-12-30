@@ -1,6 +1,7 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"fmt"
 	"strings"
 )
@@ -15,7 +16,7 @@ func runPrg(prg [][]string) (int, bool) {
 	for {
 		if _, found := seen[ptr]; !found {
 			seen[ptr] = true
-			val := makeInt(prg[ptr][1])
+			val := p.MakeInt(prg[ptr][1])
 			switch prg[ptr][0] {
 			case "acc":
 				acc += val

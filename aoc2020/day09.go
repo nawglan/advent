@@ -1,6 +1,7 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"fmt"
 	"sort"
 	"strings"
@@ -25,7 +26,7 @@ func isValid(check int) bool {
 	if val, ok := lookup[check]; ok {
 		for j := range val {
 			vals := strings.Split(j, ",")
-			if inQueue(makeInt(vals[0])) && inQueue(makeInt(vals[1])) {
+			if inQueue(p.MakeInt(vals[0])) && inQueue(p.MakeInt(vals[1])) {
 				return true
 			}
 		}
@@ -50,7 +51,7 @@ func addValue(val int) {
 func day09(puzzle_data []string) {
 	badValue := 0
 	for i, dataVal := range puzzle_data {
-		val := makeInt(dataVal)
+		val := p.MakeInt(dataVal)
 
 		if i < 25 {
 			addValue(val)
@@ -69,7 +70,7 @@ func day09(puzzle_data []string) {
 
 	sum := 0
 	for i := len(puzzle_data) - 1; i >= 0; i-- {
-		val := makeInt(puzzle_data[i])
+		val := p.MakeInt(puzzle_data[i])
 		list = append(list, val)
 		if len(list) > 1 {
 			sum = sumSlice(list)

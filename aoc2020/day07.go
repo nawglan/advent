@@ -1,6 +1,7 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"fmt"
 	"strings"
 )
@@ -52,7 +53,7 @@ func day07(puzzle_data []string) {
 		right_bags := strings.Split(data[1], ",")
 		for _, right_bag := range right_bags {
 			right_bag_parts := strings.Fields(right_bag)
-			right_bag_count := makeInt(right_bag_parts[0])
+			right_bag_count := p.MakeInt(right_bag_parts[0])
 			right_bag_color := strings.Join(right_bag_parts[1:len(right_bag_parts)-1], " ")
 
 			contains[left_bag_color][right_bag_color] = right_bag_count

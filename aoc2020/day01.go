@@ -1,6 +1,7 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"fmt"
 	"sort"
 )
@@ -9,7 +10,7 @@ func day01(puzzle_data []string) {
 	invoices := make([]int, len(puzzle_data))
 	var A, B, C int
 	for d, dataVal := range puzzle_data {
-		invoices[d] = makeInt(dataVal)
+		invoices[d] = p.MakeInt(dataVal)
 		if A == B {
 			for i := 0; i < d; i++ {
 				if invoices[i]+invoices[d] == 2020 {

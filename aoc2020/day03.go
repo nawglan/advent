@@ -1,6 +1,7 @@
 package main
 
 import (
+	p "advent/util/parse"
 	"fmt"
 	"strings"
 )
@@ -24,8 +25,8 @@ func day03(puzzle_data []string) {
 	for run, slope := range []string{"3,1", "1,1", "5,1", "7,1", "1,2"} {
 		y := 0
 		x := 0
-		slope_right := makeInt(slope[:1])
-		slope_down := makeInt(slope[2:])
+		slope_right := p.MakeInt(slope[:1])
+		slope_down := p.MakeInt(slope[2:])
 		trees_hit := map[string]bool{}
 		for y <= height {
 			x += slope_right
