@@ -53,15 +53,15 @@ func main() {
 		puzzle_data = p.ReadFile(filename)
 		day10(puzzle_data)
 	*/
-		fmt.Println("-----------------------")
-		filename = "data/day11.txt"
-		puzzle_data = p.ReadFile(filename)
-		day11(puzzle_data)
+	fmt.Println("-----------------------")
+	filename = "data/day11.txt"
+	puzzle_data = p.ReadFile(filename)
+	day11(puzzle_data)
+	fmt.Println("-----------------------")
+	filename = "data/day12.txt"
+	puzzle_data = p.ReadFile(filename)
+	day12(puzzle_data)
 	/*
-		fmt.Println("-----------------------")
-		filename = "data/day12.txt"
-		puzzle_data = p.ReadFile(filename)
-		day12(puzzle_data)
 		fmt.Println("-----------------------")
 		filename = "data/day13.txt"
 		puzzle_data = p.ReadFile(filename)
