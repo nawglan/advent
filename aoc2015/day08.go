@@ -33,15 +33,10 @@ func reformat(s string) string {
 }
 
 func day08(puzzle_data []string) {
-	sum := 0
-	sum2 := 0
+	sum, sum2 := 0, 0
 	for _, line := range puzzle_data {
-		len_line := len(line)
-		len_format := len(format(line))
-		len_reformat := len(reformat(line))
-
-		sum = sum + len_line - len_format
-		sum2 = sum2 + len_reformat - len_line
+		sum += len(line) - len(format(line))
+		sum2 += len(reformat(line)) - len(line)
 	}
 	fmt.Printf("Day 8 (part 1): Sum of the difference is %d\n", sum)
 	fmt.Printf("Day 8 (part 2): Sum of the difference is %d\n", sum2)

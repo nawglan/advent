@@ -10,7 +10,6 @@ func main() {
 	filename := ""
 	fmt.Println(filename)
 
-	//filename = "data/day01.txt"
 	filename = "data/day01.txt"
 	puzzle_data := p.ReadFile(filename)
 	day01(puzzle_data)
@@ -53,10 +52,12 @@ func main() {
 		filename = "data/day10.txt"
 		puzzle_data = p.ReadFile(filename)
 		day10(puzzle_data)
+	*/
 		fmt.Println("-----------------------")
 		filename = "data/day11.txt"
 		puzzle_data = p.ReadFile(filename)
 		day11(puzzle_data)
+	/*
 		fmt.Println("-----------------------")
 		filename = "data/day12.txt"
 		puzzle_data = p.ReadFile(filename)
