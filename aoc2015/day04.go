@@ -20,7 +20,7 @@ func day04(puzzle_data []string) {
 	}
 	fmt.Printf("Day 4 (part 1): %d\n", i)
 
-	i = 0
+	// start from where part 1 left off
 	sixzeros := regexp.MustCompile(`^000000.*`)
 	for {
 		h := md5.New()
